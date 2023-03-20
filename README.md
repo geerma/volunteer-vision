@@ -8,7 +8,7 @@ Volunteer Vision was built in a weekend for [Major League Hacking's](https://mlh
 
 [Demo Video](https://youtu.be/FodCgB-lCpw)
 
-[Wix Landing Page](kazitasin07.wixsite.com/volunteer-vision) ---(*Leads To*)---> [Next.js Website Link](https://volunteer-vision.vercel.app/)
+[Wix Landing Page](https://kazitasin07.wixsite.com/volunteer-vision) ---(*Leads To*)---> [Next.js Website Link](https://volunteer-vision.vercel.app/)
 
 [Devpost](https://devpost.com/software/coming-soon-jqsr5z)
 
