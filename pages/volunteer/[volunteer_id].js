@@ -9,7 +9,11 @@ import { useEffect, useState } from "react";
 import Profile_Individual from "@/components/Project/Profile_Individual";
 import { Stack } from "@mui/material";
 
-// Individual volunteer page
+/*
+Individual volunteer page - page acting as profile for the volunteer
+
+Contains information about which projects they are volunteering in, and total hours
+*/
 export default function Volunteer_Id({ user, userProfile }) {
   const router = useRouter()
   const { volunteer_id } = router.query
@@ -17,10 +21,17 @@ export default function Volunteer_Id({ user, userProfile }) {
   const [volunteer, setVolunteer] = useState([]);
   const [projects, setProjects] = useState();
   const [totalHours, setTotalHours] = useState(0);
-  const [isUser, setIsUser] = useState(false);
+
+  // Variable checking if user is looking at own profile. 
+  // Boolean is passed within the Profile_Individual component, allows withdrawal from projects
+  const [isUser, setIsUser] = useState(false); 
   const supabase = getSupabase(userProfile.accessToken);
 
+  /**
+   * When page loads, fetches data for: Volunter, Projects that the Volunteer applied for, and Hours
+   */
   useEffect(() => {
+    // Fetch volunteer data
     const fetchVolunteer = async () => {
       const { data } = await supabase
         .from("user")
@@ -29,6 +40,7 @@ export default function Volunteer_Id({ user, userProfile }) {
       setVolunteer(data[0]);
     };
 
+    // Fetch all projects that the volunteer applied for
     const fetchProjects = async () => {
       const { data } = await supabase
         .from("applicants")
@@ -37,13 +49,17 @@ export default function Volunteer_Id({ user, userProfile }) {
       setProjects(data);
     };
 
+    // Fetches total hours that the volunteer has worked for
+    // Uses supabase.rpc which can call a Postgres function (named get_volunteer_hours) from the Supabase database
+    // get_volunteer_hours: "SELECT SUM(hours) FROM applicants WHERE user_id = volunteer_id"
     const fetchHours = async () => {
       const { data } = await supabase.rpc('get_volunteer_hours', {volunteer_id});
       setTotalHours(data)
     }
 
+    // Check if the user looking at the profile is the volunteer (ie. looking at own profile)
     if (volunteer_id == userProfile?.id) {
-      setIsUser(true);
+      setIsUser(true); 
     }
 
     fetchVolunteer();

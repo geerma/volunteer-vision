@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 
+// Auth0 and Supabase
 const getSupabase = (access_token) => {
     const options = {};
 

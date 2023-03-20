@@ -7,6 +7,9 @@ import { getSupabase } from "@/utils/supabase";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
 
+/*
+Project component for a single project that is viewed on the Volunteer Profile page
+*/
 const Profile_Individual = ({ project_id, userProfile, hours, canDelete }) => {
   const router = useRouter();
   const urlString = `/project/${project_id}`;
@@ -14,6 +17,9 @@ const Profile_Individual = ({ project_id, userProfile, hours, canDelete }) => {
   const [project, setProject] = useState([]);
   const supabase = getSupabase(userProfile.accessToken);
 
+  /**
+   * Fetches data for all projects that the volunteer has applied for
+   */
   useEffect(() => {
     const fetchProject = async () => {
       const { data } = await supabase
@@ -27,6 +33,9 @@ const Profile_Individual = ({ project_id, userProfile, hours, canDelete }) => {
     fetchProject();
   }, []);
 
+  /**
+   * If user is looking at their own profile, they can remove themselves from the applicants of a project
+   */
   const handleDelete = async () => {
     const { error } = await supabase
       .from("applicants")

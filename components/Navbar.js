@@ -5,6 +5,9 @@ import Link from "next/link";
 import { Stack } from "@mui/system";
 import Image from "next/image";
 
+/*
+Navbar component for Volunteers and Organizations
+*/
 export const Navbar = ({ userProfile }) => {
 
   let profileUrl = "/"

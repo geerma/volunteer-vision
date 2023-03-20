@@ -10,23 +10,35 @@ import Image from "next/image";
 import { Button } from "@mui/material";
 import Link from "next/link";
 
-// Individual project page
+/*
+Individual project page - page after clicking on a single project
+Takes in userProfile, for Navbar and Supabase auth
+
+Volunteers can Apply as Volunteer, Organizations do not have that option
+*/
 export default function Project_Id({ userProfile }) {
-  const router = useRouter()
-  const { project_id } = router.query
+  const router = useRouter() 
+  const { project_id } = router.query // variable project_id from url query
 
   const [project, setProject] = useState([])
   const supabase = getSupabase(userProfile.accessToken)
 
+  /**
+   * On page load, fetch data for one specific project matching project_id from url
+   */
   useEffect(() => {
     const fetchProject = async () => {
       const { data } = await supabase.from('project').select('*').eq('project_id', project_id)
-      setProject(data[0])
+      setProject(data[0]) // Set project data
     }
 
     fetchProject()
   }, [])
 
+  /**
+   * Function called when clicking the button "Apply as Volunteer"
+   * Adds volunteer applicant to list of project attendees
+   */
   const handleClick = async () => {
     const response = await supabase.from('applicants').select('*').match({ user_id: userProfile.id, project_id: project_id });
 
