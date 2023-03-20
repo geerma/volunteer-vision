@@ -11,6 +11,7 @@ import All_Individual from "../../components/Project/All_Individual";
 All projects page - page containing all volunteer projects
 Takes in userProfile, which is used to render out the Navbar info
 Takes in projects, which is an array containing all project data
+
 Projects are shown by mapping and rendering out component: 'All_Individual'
 */
 const all = ({ userProfile, projects }) => {

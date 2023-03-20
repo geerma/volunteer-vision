@@ -5,7 +5,7 @@ import styles from "@/styles/Project.module.css";
 import Image from 'next/image';
 
 /*
-Component for a single project that is viewed on the All Projects Page
+Project component for a single project that is viewed on the All Projects Page
 */
 const All_Individual = ({project_id, name, description, location, image_url}) => {
 

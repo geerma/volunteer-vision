@@ -4,6 +4,14 @@ Volunteer Vision was built in a weekend for [Major League Hacking's](https://mlh
 
 *🎉 Awarded [First Overall](https://devpost.com/software/coming-soon-jqsr5z)!*
 
+## Links
+
+[Demo Video](https://youtu.be/FodCgB-lCpw)
+
+[Wix Landing Page](kazitasin07.wixsite.com/volunteer-vision) ---(*Leads To*)---> [Next.js Website Link](https://volunteer-vision.vercel.app/)
+
+[Devpost](https://devpost.com/software/coming-soon-jqsr5z)
+
 ## Inspiration
 
 Volunteer Vision was created to inspire individuals to make a positive impact on their community through volunteerism. We believe that every person has the potential to make a difference. By connecting volunteers with local non-profit organizations we can make the process of volunteerism more efficient and effective. This is a project that has the potential to greatly help the local residents and community.
